@@ -180,7 +180,7 @@ export default function HostList() {
           alt="임시"
           width={30}
           height={30}
-          src="https://tong.visitkorea.or.kr/cms/resource/00/2626200_image2_1.jpg"
+          src="http://tong.visitkorea.or.kr/cms/resource/00/2626200_image2_1.jpg"
         />
         <h2 className={styles.title}>HOT PLACE ✨ 인기 지역 숙소 모음</h2>
         <header className={headerClass}>

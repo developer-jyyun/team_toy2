@@ -2,7 +2,11 @@
 
 const nextConfig = {
   images: {
-    domains: ['firebasestorage.googleapis.com', 'gravatar.com'],
+    domains: [
+      'firebasestorage.googleapis.com',
+      'gravatar.com',
+      'tong.visitkorea.or.kr',
+    ],
   },
   reactStrictMode: false,
 };

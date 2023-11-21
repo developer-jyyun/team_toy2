@@ -6,6 +6,7 @@ import {
   fetchAllUsers,
 } from '@/utils/hostsStorage';
 import styles from '@/components/HostList/HostList.module.scss';
+import Image from 'next/image';
 import Search from './Search/Search';
 import HostListItem from './HostListItem/HostListItem';
 import HostDetailsModal from './HostDetailsModal/HostDetailsModal';
@@ -175,6 +176,12 @@ export default function HostList() {
   return (
     <>
       <section className={styles.container} id="host-list">
+        <Image
+          alt="임시"
+          width={30}
+          height={30}
+          src="https://tong.visitkorea.or.kr/cms/resource/00/2626200_image2_1.jpg"
+        />
         <h2 className={styles.title}>HOT PLACE ✨ 인기 지역 숙소 모음</h2>
         <header className={headerClass}>
           <div className={styles.inner}>

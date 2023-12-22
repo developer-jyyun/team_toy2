@@ -7,10 +7,10 @@
 ### <p align="center">Talkhaja에서 유저들과 함께 여러분들의 여정을 공유하고 즐기세요.</p>
 
 <p align="center">
-  <a href="https://talkhaja.netlify.app">
+  <a href="https://talkhaja-i2wpceq8m-jseo9732.vercel.app">
     <img src="https://img.shields.io/badge/Talkhaja-FF3478?style=for-the-badge&logoColor=white" alt="Talkhaja Link"/>
   </a>
-  <a href="https://talkhaja-i2wpceq8m-jseo9732.vercel.app>
+  <a href="https://github.com/teamTalkhaja/Talkhaja">
     <img src="https://img.shields.io/badge/배포 repository-212125?style=for-the-badge&logoColor=white" alt="배포 레포"/>
   </a>
   <br/>

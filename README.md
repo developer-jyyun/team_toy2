@@ -21,6 +21,9 @@
 >PW: 11111
 
 ### 🗓️ 개발 기간: `2주(13일) 23.11.06 ~ 23.11.16`
+### [📺 프로젝트 시연 영상 보러가기](https://drive.google.com/file/d/1bIFfrJP03FSYbmgt0cFD4wXcxNsfdnSS/view?usp=sharing)
+
+
 
 ## :clap: Contributors
 
@@ -31,7 +34,7 @@
         <td align="center"><img alt="avatar" src="https://github.com/junkue20.png" width="100"></td>
         <td align="center"><img alt="avatar" src="https://github.com/Eojoonhyuk.png" width="100"></td>
         <td align="center"><img alt="avatar" src="https://github.com/developer-jyyun.png" width="100"></td>
-<td align="center"><img alt="avatar" src="https://camo.githubusercontent.com/7e27cc9db91da1be5f90f1fc376d8ee6c30702133e16a8227975a0802d613fa6/68747470733a2f2f63612e736c61636b2d656467652e636f6d2f54303537584a50345433342d55303546364546383447352d3061386338333635393838322d353132" width="100"></td>
+<td align="center"><img alt="avatar" src="https://avatars.githubusercontent.com/u/33550065?v=4" width="100"></td>
     </tr>
     <tr>
         <td align="center"><a href="https://github.com/jseo9732">서지수</a></td>
@@ -200,272 +203,1059 @@
    ┗ 📜tsconfig.json
   ```
 
-## 💭 개인별 작업 내용
-<details>
-<summary>서지수</summary>
 
-## 작업 세부내용
-- 팀장
-- 채팅방 목록 조회 및 숙소, 유저와의 채팅 구분
-- 채팅방 참여 기능
-- 소켓 연결을 통한 새로 생성된 채팅방 실시간 조회
 
-## 회고
-
-팀장을 맡게되면서 많은 부담과 걱정이 있었다. 하지만 이번 프로젝트의 팀장 경험은 나에게 많은 의미가 있었다. 실력 부족, 일정 관리, 역할 분배 등의 걱정이 있었는데 실력 부족은 프로젝트를 진행하면서 공부, 팀원들과의 공유를 통해서 극복할 수 있었고 일정 관리, 역할 분배는 노션, 지라등의 협업 툴을 이용해 팀원들의 작업 상황, 남은 작업 파악, 각자의 진행 상황에 따른 잔업 분배 등을 효율적으로 할 수 있었고 다음 프로젝트에서도 팀원으로서 팀장 및 다른 팀원에게 나의 상황 공유을 잘 해야겠다고 생각했다.
-
-저번 프로젝트에서 가상화폐 데이터 소켓 연결 경험이 있어서 이번 채팅 소켓 연결과 수월할 것이라고 생각했는데 소켓 연결 후 일방적으로 데이터를 받기만 했던 전 작업과는 다르게 채팅 소켓 연결은 쌍방 소통이 필요한 작업이라 차이가 있었다. 소켓 연결 후에 입/퇴장, 메세지 수신/발신 등의 작업이 있어서 다른 방식의 소켓 연결 작업도 경험할 수 있었다.
-또한, API의 에러 처리 및 에러 코드가 상세하게 구분되어있지 않아서 팀원들과 함께 개발자 도구의 네트워크 탭을 분석할 일이 많았는데 이 경험을 통해서 앞으로 백엑드에 무작정 '안돼요...'하기 보다는 네트워크 탭을 분석해서 원인을 찾는 방법을 알게 되었다.
-이번 프로젝트을 통해서 이전에 Next 경험이 있었지만 작업에서 단순 Next의 문법만 따랐을 뿐이지 Next의 기능은 전혀 사용하지 않았다는 것을 알게되었고 앞으로 SSR에 대해서 공부해야겠다고 생각했다.
-
-마지막으로 팀원 한분한분에 대해서 회고 및 감사를 적었지만 리드미가 날라가는 바람에... 따로 전달하기로 하고 여기서는 팀원 모두에게 감사을 전합니다^^
-
-
-</details>
-
-<details>
-<summary>김지민</summary>
-
-## :thought_balloon: 채팅 주요 기능
-
-|                           소켓 연결, 채팅 보내기, 채팅 받기 이전 채팅 가져오기                            |                                                채팅 나가기                                                |
-| :-------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
-| ![chatting](https://github.com/Toy2-team10/Talkhaja/assets/65649035/8d137c4a-2935-47d8-a07d-6c864546ac40) | ![chat_out](https://github.com/Toy2-team10/Talkhaja/assets/65649035/9fb496ad-8287-428e-addf-c5772d06d7f0) |
-|       처음 채팅방에 들어오면 이전 대화 목록들을 모두 받습니다. 소켓 연결로 실시간 채팅이 가능합니다       |                   채탱방 나가기 버튼을 누르면 해당 방에서 나가지고 목록으로 돌아갑니다                    |
-
-## :art: 디자인
-
-|                                                   헤더                                                    |                                                                                                채팅방 목록                                                                                                |
-| :-------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| ![header_1](https://github.com/Toy2-team10/Talkhaja/assets/65649035/c5ce2ae9-4c24-48bb-a4c1-36414e8f23d5) |                                             ![chat_list_style](https://github.com/Toy2-team10/Talkhaja/assets/65649035/9292d052-0d7f-4cfd-9778-73720bcbdcaa)                                              |
-|                         스크롤 위치에 따라 헤더의 크기가 달라지게 구현하였습니다.                         | 전체적인 채팅방목록을 디자인하고 목록을 호버하면 해당 채팅방의 배경색을 바꿔주었습니다. 또한 채팅 더하기 버튼을 누르면 모달창이 뜨도록 하였습니다. 모달창에서는 채팅 제목을 15자 이상으로 제한하였습니다. |
-
-## :bomb: 트러블 슈팅
-
-#### :x:오류
-
-Duplicate atom key "userIdState". This is a FATAL ERROR in production. But it is safe to ignore this warning if it occurred because of
-hot module replacement.
-
-분명 atom은 하나인데 자꾸 이런 오류가 떴습니다.
-찾아보니 Next.js에서 build를 하면 atom을 저장해두는데 이것 때문에 두개로 중복된다고 Next.js에서 판단한다는 유명한 오류였습니다.;;
-
-#### :heavy_check_mark: 해결
-
-RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
-.App.js 파일 상단에 추가하니 오류가 사라졌습니다!
-
---
-
-#### :x:오류
-
-socket을 두번씩 생성되는 오류가 있었습니다. 이 때문에 소켓 connect가 제대로 이루어지지 않았습니다.
-
-#### :heavy_check_mark: 해결
-
-next.config.js 파일에서 reactStrictMode: false 를 해주었습니다.
-react에서는 reactStrictMode: true이면 render가 강제적으로 두번씩 된다고 합니다!
-또한 무한 소켓 연결을 막기 위해 useMemo를 사용하여 소켓을 생성해주었습니다
-
---
-
-#### :x:오류
-
-socke을 connect 했음에도 불구하고 fetch-messages가 서버로 전송되지 않는 에러
-
-#### :heavy_check_mark: 해결
-
-setTimeout을 사용해 소켓에 요청이 들어갈때까지 요청을 보냈습니다.
-
---
-
-#### :x:오류
-
-채팅방에서 text를 작성해 onChange 이벤트가 발생하면 상관없는 userId API를 호출하는 오류
-
-#### :heavy_check_mark: 해결
-
-userId API를 useEffect로 감싸서 의존성 배열에 chatId로만 변경하였습니다.
-
---
-
-#### :x:오류
-
-Image is missing required "src" property:
-
-#### :heavy_check_mark: 해결
-
-소켓에서 받아오는 대화정보는 userId만 받아와서 해당 userID의 정보를 API요청으로 받아줄때
-유저 이미지를 useState('')값으로 초기화를 했더니 발생한 오류였읍니다.
-src 에userImage의 경로가 들어가긴 하지만 Nextjs에서 제공하는 Image태그는 src값을 절대 빈값으로 받지않아 발생는 오류였습니다. 따라서 response로 받아오는 이미지 url값이 있을때만 해당 Image 태그를 반환하게 수정하였더니 해결되었습니다
-
-## 회고
-
-react에서 소켓 연결은 처음이라 정말 많은 우여곡절이 있었다.:sweat_drops: 소켓 연결 시도하면서 너무 막막했지만 팀원들 덕분에 다같이 해결할 수 있었다 + 멘토님 :fire::fire:<br/>
-진짜 채팅 기능 구현 못할 것 같았는데 해냈다..도와주신 팀원분들 모두 감사합니다!:+1::+1:<br/>
-scss를 처음 사용해보았는데 생각보다 편리해서 좋았다 css를 상속할 수 있다는게 진짜 편리한 것 같다.<br/>
-axios를 사용해서 API 연결했는데 처음에는 에러 코드가 너무 세분화 되어있지 않아서 불편했는데 덕분에 네트워크 탭을 마스터 한 것 같아서 뿌듯하다..이제는 어떠한 네트워크 오류가 발생해도 해결할 수 있을 듯한 느낌:+1: <br/>
-어찌보면 간단한 기능을 구현하는 거라고 생각했는데 생각보다 시간이 걸렸고 꽤나 어려움을 느꼈다.. 그리고 이번에도 Next.js를 제대로 활용하지 못한 느낌이라 아쉬웠다..
-소켓 연결에 시간을 많이 뺏겨 SSR을 제대로 공부하고 사용할 시간적 여유가 없었어서 아쉬웠다..!
-그래도 협업하는 법을 다시 한 번 알게되었고 또, 처음으로 zira를 사용해볼 수 있어서 좋았다!
-하지만 아무래도 공통 컴포넌트를 개인적으로 작업하는 건 한계가 있는 것 같아서 다음 프로젝트에서는 꼭 storybook을 사용해 봐야겠다!
-
-</details>
-
-<details>
-<summary>박준규</summary>
-
-## 수행 역할
-
-- 채팅방 UI 구성 및 컴포넌트 퍼블리싱
-- 채팅방 유저 출입 알림기능 구현
-- 실시간 채팅참여 인원 조회기능 Dropdown Menu 구현
-
-|                                          채팅방 입장 시 알림 메세지                                           |                                          채팅방 퇴장 시 알림 메세지                                          |
-| :-----------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: |
-| ![entryNotice](https://github.com/Toy2-team10/Talkhaja/assets/122848687/ddae2d89-460a-4f52-8b69-703bbbcfe0b9) | ![exitNotice](https://github.com/Toy2-team10/Talkhaja/assets/122848687/316b8380-3689-4aec-b6bf-2f434a87711c) |
-
-|                                     채팅 참여 인원 발생시 Dropdown Menu                                      |                                     채팅이탈 인원 발생시 Dropdown Menu                                      |
-| :----------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
-| ![entryModal](https://github.com/Toy2-team10/Talkhaja/assets/122848687/113beff4-d438-4e87-b778-98262a6b6750) | ![exitModal](https://github.com/Toy2-team10/Talkhaja/assets/122848687/de0cc274-0ac3-4162-b0bf-90b9d00cf663) |
-
-## 발생했었던 이슈
-
-- 입, 퇴장 메세지 기능을 구현하는 중 다른사람이 퇴장했는데도 계속해서 똑같은 사람의 이름이 표시되는 오류가 발생했었다.
-
-```tsx
-socket.on('join', (messageObject: JoinersData) => {
-  console.log(messageObject, '채팅방 입장');
-  setJoiners(prevJoiners => [...prevJoiners, ...messageObject.joiners]);
-});
-
-socket.on('leave', (messageObject: LeaverData) => {
-  console.log(messageObject, '채팅방 퇴장');
-  setLeavers(prevLeavers => [...prevLeavers, messageObject.leaver]);
-});
-```
-
-위와 같이 소켓을 통해 받아온 데이터였는데, 초반에 `Join`을 통해 받아오는 데이터는 `leave`의 데이터들과 달리 api에 불필요한 더미 데이터들이 같이 전송되어 필요한 부분만 추출하여 사용함에 있어서 애를 먹기도 했었지만 데이터는 성공적으로 받아 왔는데, 원인을 알고나니 스스로 기본기가 정말 많이 부족함을 느꼈다..
-
-```tsx
-useEffect(() => {
-  if (enterName) {
-    setShowEntryNotice(true);
-
-    const entryTimer = setTimeout(() => {
-      setShowEntryNotice(false);
-      setEnterName(''); // 이부분..
-    }, 3000);
-    return () => clearTimeout(entryTimer);
-  }
-}, [enterName]);
-
-useEffect(() => {
-  if (exitName) {
-    setShowExitNotice(true);
-
-    const exitTimer = setTimeout(() => {
-      setShowExitNotice(false);
-      setExitName(''); // 이부분..
-    }, 3000);
-
-    return () => clearTimeout(exitTimer);
-  }
-}, [exitName]);
-```
-
-useState를 사용함에 있어서 사용이 끝난 직후 state값을 초기화 해주는 작업을 제외하고 작업을 진행하다 보니, 예상과는 다른 값들이 도출되어 문제가 발생했던 것이다. 이후 값을 초기화해주는 코드를 넣고 작업을 진행했는데, 다행히 정상동작함을 확인할 수 있었다.
-
-이 이후에도 채팅방에서 특정 유저를 조회하여 해당 유저의 사진정보와 이름 등을 받아오는데 원인모를 문제때문에 6시간이 넘도록 앉아있기도 했었는데, 결국은 `api를 요청하는 주소의 오타`때문인 것을 알고 난 뒤에는 정말이지 그렇게 허무할 수 없었다..ㅠㅠ
-
-다행히 그렇게 큰 이슈는 아니었지만,
-`console.log를 찍어서 잘 보내고 잘 받아오는지 확인하기`,
-`외부 데이터를 사용할때는 오타가 있는지 확인하기` 등 개발을 함에 있어서 항상 내가 올바르게 하고 있는지 수시로 확인 할 필요가 있음을 뼈저리게 느끼게 되었다.
-
-## 회고
-
-이번 기간동안 가급적 많은 도전과 시도를 통해서 많은 공부를 해야했던 좋은 기회였음에도 불구하고,
-그러지 못했음에 다소 아쉬움이 남았다.
-
-2주라는 짧은 기간에 Next.js나 recoil(이번 프로젝트때 한번도 사용해보진 못했지만..) socket 등의 기술들을 가지고 결과물을 만들어내는것이 쉬운 일도 아니었을 뿐더러, 특히 우리조의 API-key에 이슈가 있어 개발도중 난항을 겪기도 했었지만
-부단하게 노력하며 밤을 지새우면서까지 나를 가르쳐준 우리 조장과 팀원들 덕에 결국 프로젝트를 마무리할 수 있게 되었다.
-
-사실 이번 프로젝트 기간동안 약간의 슬럼프가 찾아오기도 했었다.
-`'지금까지 달려왔는데도 실력도 크게 늘지않고, 도통 어떻게 해야할지 잘 모르겠다'`는 생각도 자주 들었었고,
-`'이런 간단한 것 조차도 구현하는데 있어서 많은 시간이 걸리는걸 보니, 나는 사실 개발에 재능이 없을지도 모르겠다'`
-는 생각도 들고, `'미니 프로젝트를 진행하기 이전에 개발자를 포기해야하나'` 라고 혼자 고민을 하기도 했었다.
-
-하지만 구현한 기능이 아무리 적더라도 성공적으로 구현하는데 목표를 두고 도전해보라며 격려해주시던 유영매니저님과 팀원들, 그리고 스터디그룹원들의 응원 덕분에 다시금 키보드를 잡고 오랜만에 꺼져가던 열정에 다시 숨을 불어넣었고,
-목표했던 기능들의 구현을 성공적으로 마칠 수 있었다.
-
-어찌보면 항상 강의장에서 다른 수강생들과 함께 머리를 맞대며 공부를 이어나가는 수강생들과는 달리 4개월이 넘는 시간동안 어두컴컴한 방에 틀어박혀 작은 글씨들을 보고 있으니 몸과 마음이 지칠만도 하다. 게다가 새로운 기술을 배우는데 있어 남들보다 조금 더 천천히 내가 원하는대로 뜯어보며 배워가는 타입이다 보니, 빠르게 성장하는 다른 팀원들의 모습에 자존심도 상하고, 조바심이 나기도 했었다.
-
-하지만 이번 프로젝트를 말미암아 내 스스로 어떤 공부를 해야하는지, 현재 내가 어떤 상황에 놓였는지에 대해서 조금 더 진지하게 생각할 수 있었던 계기가 된 것 같다. 지금 당장은 가파른 성장을 이루지 못하더라도, 언젠간 깊은 뿌리를 내려 큰 결실을 맺을 수 있는 거목같은 개발자가 되리라고 스스로 다짐해본다.
-
-</details>
-
-<details>
-<summary>어준혁</summary>
-
-## 작업 내용 요약
-
-- 로그인
-- 회원가입
-- 마이페이지
-- 리다이렉트
-
-## 로그인 기능 구현
-
-- JWT 토큰과 쿠키를 이용한 토큰 관리(next-cookie)
-
-## 회원가입 기능 구현
-
-- 사진등록(firebase storage)
-- 입력값 유효성 검사(useForm)
--
-
-## 마이페이지 기능 구현
-
-- 유저 사진, 이름 변경
-- 로그아웃
-
-## 후기
-
-프로젝트를 진행할 때 항상 리액트를 사용했었다. 그래서 팀에서 넥스트를 사용한다고 하였을 때 조금은 겁이 났다. 토이 프로젝트가 끝나고 한달이나 시간이 있었는데 공부를 안한 내 자신이 후회스러웠다. 프로젝트가 시작되고 공부를 하면서 구현을 하기 시작했다. 하지만 CSR에 익숙했던 나는 넥스트의 장점을 전혀 살리지 못한 코드를 작성하고 있었다. 그래서 시간이 걸리더라도 SSR기반의 코드를 짜보자고 다짐하여 getServerSideProps를 사용하면서 넥스트에 재미가 붙기 시작했다. 또 팀원들과 패스트캠퍼스 강의장에서 다같이 작업하다보니 시너지 효과가 발휘되어 개발에만 전념할 수 있었다. 이 프로젝트를 진행하고 새로운 기술에 대한 호기심이 더욱 더 생겼고 개발이 더 재밌어졌다. 이런 마음을 오랫동안 유지하고싶다.
-
-</details>
-
-<details>
-<summary>윤지영</summary>
-
-## 작업 내용
-
-|                                         해시태그를 통한 스크롤 이동                                          |                                              검색을 통한 데이터 필터링                                              |
-| :----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
-| ![scroll](https://github.com/developer-jyyun/testtalk/assets/131247158/6c567de5-7027-4694-8ee7-f7c8e544b1d8) | ![search__modal](https://github.com/developer-jyyun/testtalk/assets/131247158/098af386-4d70-48d9-9fa8-c9708e41e819) |
-
-|                                            채팅목록 시간 포맷팅                                             |                                           숙소 정보 상세보기 모달                                           |
-| :---------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
-| ![image](https://github.com/developer-jyyun/testtalk/assets/131247158/37a38153-bbe1-4c6d-b85d-370a666b4164) | ![MODAL](https://github.com/developer-jyyun/testtalk/assets/131247158/ef3eb661-74b3-4da9-a084-34b49b03ac4b) |
-
-#### 숙소 목록 페이지
-
+## 💭 담당 페이지 :: 🏡 숙소 목록 페이지 
 - 데이터를 지역별로 필터링 하여 사용자에게 노출
+  <img src="https://github.com/developer-jyyun/team_toy2/assets/131247158/68d7b0e8-eb42-4449-b160-4df7cca50f61" width="700">
+
+### ✔ 해시태그를 통한 스크롤 이동
 - 스크롤 시 상단 고정되는 해시태그를 통해 원하는 지역으로 스크롤 이동
+  <img src="https://github.com/developer-jyyun/team_toy2/assets/131247158/94d098a4-ad20-4b19-8a85-09331a154328" width="700">
+
+### ✔ 검색을 통한 데이터 필터링 
 - 키워드 검색 결과를 지역별로 노출 (숙소데이터 관련 모든 키워드)
 - 검색결과 유/무, 검색어 유/무에 따른 페이지/ 컴포넌트 렌더링
+  <img src="https://github.com/developer-jyyun/team_toy2/assets/131247158/61892c64-f2c8-4643-9c31-08ccd0143a84" width="700">
 
-#### 하단 고정 내비게이션
+### 숙소 정보 상세보기 모달
+- 숙소 목록의 상세보기 버튼 클릭 시 해당 숙소 정보 모달 오픈.
+- firebase를 이용한 host 유저들의 데이터를 따로 관리
+  <img src="https://github.com/developer-jyyun/team_toy2/assets/131247158/585da29d-cd52-4a95-a486-d09b640f03b8" width="700">
 
-#### 오픈 채팅 목록 시간 표시 포맷팅
+### ✔ 채팅 목록 시간 포맷팅
+- 최근 채팅 시간에 따른 '방금', 'n분 전', 'n시간 전', 'n일 전' 표시
+ <img src="https://github.com/developer-jyyun/team_toy2/assets/131247158/9e710f66-f5d2-426f-93c7-4a528a87f9ce" width="700">
+
+### ✔ 하단 고정 내비개이션
+- recoil 상태관리를 이용하여 페이지 별 내비게이션 노출 / 미노출 여부 관리
+  <img src="https://github.com/developer-jyyun/team_toy2/assets/131247158/3186d59f-ef1c-4606-97c6-9ca86ecc130c" width="700">
+
+
+
+
+
 
 ## 작업 중 어려웠던 점
+<details>
+  <summary>
+    제공 된 API
+  </summary>
+## API 사용법
 
-제공된 api만으로는 숙박업체 유저와 일반 사용자 유저를 구분하기가 쉽지 않았는데 다행히 프로젝트 시작 후 금방 진행된 멘토님의 조언 덕분에 덜 헤매고 수월하게 작업 할 수 있었다!!
-하지만 프로젝트 종료일 직전 효율적인 코드를 위해 데이터를 읽고 쓰는 방식을 변경하기로 하면서 그에 따른 코드변화가 도미노처럼 줄줄이 이어졌다. 사실 하나하나씩 차근차근 보면 별 거 아닌 것 같은데 금방 끝날 것 같던 작업이 끝나지 않으니 마음이 점점 더 조급해져 갔다. 처음부터 충분히 고민해보고 잘 설계 후에 작업 했다면 훨씬 여유롭게 프로젝트를 마칠 수 있었을 것 같아 아쉽다. 매 작업 시 느끼는 어려운 점이 설계 단계인 것 같다. 직접 코드를 짜기 전까지는 가늠이 안된다..작업 시간도 구조 설계도...더 많이 배우고 경험해봐야 할 것 같다!
+- 모든 network 요청(Request) `headers`에 아래 정보가 꼭 포함돼야 합니다!  
+- serverId는 팀마다 개별 전달됩니다.
+- 확인할 수 없는 사용자나 팀의 DB 정보는 임의로 삭제될 수 있습니다!
+
+```json
+{
+  "content-type": "application/json",
+  "serverId": "nREmPe9B",
+}
+```
+
+## 기본 데이터 구조
+### user
+```ts
+interface User {
+  id: string;
+  password: string;
+  name: string;
+  picture: string;
+  chats: string[]; // chat id만 속합니다.
+}
+```
+### chat
+```ts
+interface Chat {
+  id: string;
+  name: string;
+  isPrivate: boolean;
+  users: string[];
+  messages: Message[]; // message 객체가 속합니다.
+  
+  updatedAt: Date;
+}
+```
+### message
+```ts
+interface Message {
+  id: string;
+  text: string;
+  userId: string;
+
+  createdAt: Date;
+}
+```
+## 회원
+
+### 회원가입
+
+사용자가 `id`에 종속되어 회원가입합니다.
+
+- 사용자 비밀번호는 암호화해 저장합니다.
+- 프로필 이미지는 url or base64 형식이어야 합니다.
+- 프로필 이미지는 1MB 이하여야 합니다.
+
+```curl
+curl https://fastcampus-chat.net/signup
+  \ -X 'POST'
+```
+
+요청 데이터 타입 및 예시:
+
+```ts
+interface RequestBody {
+  id: string // 사용자 아이디 (필수!, 영어와 숫자만)
+  password: string // 사용자 비밀번호, 5자 이상 (필수!)
+  name: string // 사용자 이름, 20자 이하 (필수!)
+  picture?: string // 사용자 이미지(url or base64, under 1MB)
+}
+```
+
+```json
+{
+  "id": "abcd",
+  "password": "********",
+  "name": "GyoHeon",
+  "picture": "https://avatars.githubusercontent.com/u/66263916?v=4"
+}
+```
+
+응답 데이터 타입 및 예시:
+
+```ts
+interface ResponseValue {
+  message: title
+}
+```
+
+```json
+{
+  "message": "User created"
+}
+```
+
+### id 중복 체크
+
+`id` 중복 체크를 합니다.
+
+```curl
+curl https://fastcampus-chat.net/check/id
+  \ -X 'POST'
+```
+
+요청 데이터 타입 및 예시:
+
+```ts
+interface RequestBody {
+  id: string // 사용자 아이디 (필수!, 영어와 숫자만)
+}
+```
+
+```json
+{
+  "id": "abcd",
+}
+```
+
+응답 데이터 타입 및 예시:
+
+```ts
+interface ResponseValue {
+  isDuplicated: boolean
+}
+```
+
+```json
+{
+  "isDuplicated": false
+}
+```
+
+### 로그인
+
+- 발급된 `accessToken`은 7일 후 만료됩니다.
+
+```curl
+curl https://fastcampus-chat.net/login
+  \ -X 'POST'
+```
+
+요청 데이터 타입 및 예시:
+
+```ts
+interface RequestBody {
+  id: string // 사용자 아이디 (필수!)
+  password: string // 사용자 비밀번호 (필수!)
+}
+```
+
+```json
+{
+  "id": "abcd",
+  "password": "********"
+}
+```
+
+응답 데이터 타입 및 예시:
+
+```ts
+interface ResponseValue {
+  accessToken: string // 사용자 접근 토큰
+  refreshToken: string // access token 발급용 토큰
+}
+```
+
+```json
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlQS3I...(생략)",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlQS3I...(생략)"
+}
+```
+
+### 인증 확인
+
+`id` 중복 체크를 합니다.
+
+```curl
+curl https://fastcampus-chat.net/auth/me
+  \ -X 'GET'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+- 없음
+
+응답 데이터 타입 및 예시:
+
+```ts
+interface ResponseValue {
+  auth: boolean;
+  user?: User;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+```
+
+```json
+{
+  "auth": true,
+  "user": {
+    "id": "test1",
+    "name": "abcde",
+    "picture": "https://avatars.githubusercontent.com/u/42333366?v=4"    
+  }
+}
+```
+
+### 토큰 재발급
+
+```curl
+curl https://fastcampus-chat.net/refresh
+  \ -X 'POST'
+```
+
+요청 데이터 타입 및 예시:
+
+```ts
+interface RequestBody {
+  refreshToken: string // access token 발급용 토큰
+}
+```
+
+```json
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlQS3I...(생략)"
+}
+```
+
+응답 데이터 타입 및 예시:
+
+```ts
+interface ResponseValue {
+  accessToken: string // 사용자 접근 토큰
+}
+```
+
+```json
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlQS3I...(생략)",
+}
+```
+
+### 사용자 정보 수정
+
+- 프로필 이미지는 url or base64 형식이어야 합니다.
+- 프로필 이미지는 1MB 이하여야 합니다.
+
+```curl
+curl https://fastcampus-chat.net/user
+  \ -X 'PATCH'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+
+```ts
+interface RequestBody {
+  name?: string // 새로운 표시 이름
+  picture?: string // 사용자 프로필 이미지(url or base64)
+}
+```
+
+```json
+{
+  "name": "abcde",
+  "picture": "https://avatars.githubusercontent.com/u/42333366?v=4"
+}
+```
+
+응답 데이터 타입 및 예시:
+
+```ts
+interface ResponseValue {
+  messgae: string
+}
+```
+
+```json
+{
+  "message": "User updated"
+}
+```
+
+## 채팅
+### 특정 유저 조회
+- 특정 유저를 조회합니다.
+```curl
+curl https://fastcampus-chat.net/user?userId=${userId}
+  \ -X 'GET'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+요청 데이터 타입 및 예시:
+- 없음
+- 조회하고 싶은 id는 query string으로 사용합니다.
+
+응답 데이터 타입 및 예시:
+```ts
+type ResponseValue = {
+  user: User;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+```
+
+```json
+{
+  "user": {
+    "id": "user1",
+    "name": "lgh",
+    "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+  }
+}
+```
+
+### 모든 유저 조회
+- 현재 존재하는 모든 유저를 조회합니다.
+```curl
+curl https://fastcampus-chat.net/users
+  \ -X 'GET'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+요청 데이터 타입 및 예시:
+- 없음
+
+응답 데이터 타입 및 예시:
+```ts
+type ResponseValue = User[]
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+```
+
+```json
+[
+  {
+    "id": "user1",
+    "name": "lgh",
+    "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+  },
+  {
+    "id": "user2",
+    "name": "ldj",
+    "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+   }
+]
+```
+
+### 채팅 생성하기
+
+```curl
+curl https://fastcampus-chat.net/chat
+  \ -X 'POST'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+```ts
+interface RequestBody{
+  name: string, // chat 이름
+  users: string[], // 참가자들 id(자신 미포함)
+  isPrivate?: boolean // 공개 비공개
+}
+```
+
+```json
+{
+  "name": "test chat",
+  "users": ["user1", "user2"]
+}
+```
+
+응답 데이터 타입 및 예시:
+```ts
+interface ResponseValue {
+  id: string,
+  name: string,
+  users: User[], // 자신을 포함한 참가자들 정보
+  isPrivate: boolean,
+  updatedAt: Date
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+```
+
+```json
+{
+  "id": "fasgadsfdsghssdlsdafasd",
+  "name": "test chat",
+  "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+     }
+  ],
+  "isPrivate": false,
+  "updatedAt": "2023-11-01T08:23:39.850Z"
+}
+```
+
+### 특정 채팅 조회
+- 특정 id의 채팅을 조회합니다.
+- isPrivate: true인 채팅방은 해당 채팅방 참가자만 볼 수 있습니다.
+
+```curl
+curl https://fastcampus-chat.net/chat/only?chatId=${chatId}
+  \ -X 'GET'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+- 없음
+
+응답 데이터 타입 및 예시:
+```ts
+interface ResponseValue {
+  chat: Chat;
+}
+
+interface Chat {
+  id: string;
+  name: string;
+  users: User[]; // 속한 유저 정보
+  isPrivate: boolean;
+  latestMessage: Message | null;
+  updatedAt: Date;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+
+interface Message {
+  id: string;
+  text: string;
+  userId: string;
+  createAt: Date;
+}
+```
+
+```json
+{
+  chat: {
+    "id": "f189ab25-5644-4d72-bd7c-0170ee9c8ede",
+    "name": "chat room 1",
+    "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+    }
+    ],
+    "isPrivate": false,
+    "updatedAt": "2023-10-31T13:18:38.216Z",
+    "latestMessage": null
+  }
+}
+```
+
+### 모든 채팅 조회
+- 현재 존재하는 모든 채팅을 조회합니다.
+- isPrivate: true인 채팅방은 보이지 않습니다.
+
+```curl
+curl https://fastcampus-chat.net/chat/all
+  \ -X 'GET'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+- 없음
+
+응답 데이터 타입 및 예시:
+```ts
+type ResponseValue = Chat[]
+
+interface Chat {
+  id: string;
+  name: string;
+  users: User[]; // 속한 유저 정보
+  isPrivate: boolean;
+  latestMessage: Message | null;
+  updatedAt: Date;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+
+interface Message {
+  id: string;
+  text: string;
+  userId: string;
+  createAt: Date;
+}
+```
+
+```json
+[
+  {
+    "id": "f189ab25-5644-4d72-bd7c-0170ee9c8ede",
+    "name": "chat room 1",
+    "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+    }
+  ],
+    "isPrivate": false,
+    "updatedAt": "2023-10-31T13:18:38.216Z",
+    "latestMessage": null
+  },
+  {
+    "id": "f189ab25-5644-4d72-bd7c-0170ee9c8edj",
+    "name": "chat room 2",
+    "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+    }
+  ],
+    "isPrivate": false,
+    "updatedAt": "2023-10-31T15:18:38.216Z",
+    "latestMessage": {
+      "id": "8f7f67bb-f1ab-4792-9678-0b8546adcb6f",
+      "text": "testtest444",
+      "userId": "test:test6",
+      "createdAt": "2023-11-06T11:15:50.588+00:00"
+    }
+  }
+]
+```
+
+### 나의 채팅 조회
+```curl
+curl https://fastcampus-chat.net/chat
+  \ -X 'GET'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+- 내가 속한 모든 채팅을 조회합니다.
+- isPrivate: true인 채팅방도 모두 보이게 됩니다.
+
+요청 데이터 타입 및 예시:
+- 없음
+
+응답 데이터 타입 및 예시:
+```ts
+type ResponseValue = Chat[]
+
+interface Chat {
+  id: string;
+  name: string;
+  users: User[]; // 속한 유저 id
+  isPrivate: boolean;
+  latestMessage: Message | null;
+  updatedAt: Date;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+
+interface Message {
+  id: string;
+  text: string;
+  userId: string;
+  createAt: Date;
+}
+```
+
+```json
+[
+  {
+    "id": "f189ab25-5644-4d72-bd7c-0170ee9c8ede",
+    "name": "chat room 1",
+    "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+    }
+  ],
+    "isPrivate": true,
+    "updatedAt": "2023-10-31T13:18:38.216Z",
+    "latestMessage": null
+  },
+  {
+    "id": "f189ab25-5644-4d72-bd7c-0170ee9c8edj",
+    "name": "chat room 2",
+    "users": [
+      {
+        "id": "user1",
+        "name": "lgh",
+        "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+      },
+      {
+        "id": "user2",
+        "name": "ldj",
+        "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+      }
+    ],
+    "isPrivate": false,
+    "updatedAt": "2023-10-31T15:18:38.216Z",
+    "latestMessage": {
+      "id": "8f7f67bb-f1ab-4792-9678-0b8546adcb6f",
+      "text": "testtest444",
+      "userId": "test:test6",
+      "createdAt": "2023-11-06T11:15:50.588+00:00"
+    }
+  }
+]
+```
+
+## 채팅 참여하기
+
+```curl
+curl https://fastcampus-chat.net/chat/participate
+  \ -X 'PATCH'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+```ts
+interface RequestBody {
+  chatId: string;
+}
+```
+
+```json
+{
+  "chatId": "f189ab25-5644-4d72-bd7c-0170ee9c8ede"
+}
+```
+
+응답 데이터 타입 및 예시:
+```ts
+interface ResponseValue{
+  id: string;
+  name: string;
+  users: User[]; // 속한 유저 id
+  isPrivate: boolean;
+  updatedAt: Date;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+```
+
+```json
+{
+  "id": "f189ab25-5644-4d72-bd7c-0170ee9c8ede",
+  "name": "chat room 1",
+  "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+    }
+  ],
+  "isPrivate": true,
+  "updatedAt": "2023-10-31T13:18:38.216Z"
+}
+```
+
+## 채팅 나가기
+
+```curl
+curl https://fastcampus-chat.net/chat/leave
+  \ -X 'PATCH'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+```ts
+interface RequestBody {
+  chatId: string;
+}
+```
+
+```json
+{
+  "chatId": "f189ab25-5644-4d72-bd7c-0170ee9c8ede"
+}
+```
+
+응답 데이터 타입 및 예시:
+```ts
+interface ResponseValue {
+  message: string;
+}
+```
+
+```json
+{
+  "message": "Leave success"
+}
+```
+
+## 채팅 초대하기
+
+```curl
+curl https://fastcampus-chat.net/chat/invite
+  \ -X 'PATCH'
+  \ -H 'Authorization: Bearer <accessToken>'
+```
+
+요청 데이터 타입 및 예시:
+```ts
+interface RequestBody {
+  chatId: string;
+  users: string[]; // 초대할 유저 id
+}
+```
+
+```json
+{
+  "chatId": "f189ab25-5644-4d72-bd7c-0170ee9c8ede",
+  "users": ["user1", "user2"]
+}
+```
+
+응답 데이터 타입 및 예시:
+```ts
+interface ResponseValue{
+  id: string;
+  name: string;
+  users: User[]; // 속한 유저 정보
+  isPrivate: boolean;
+  updatedAt: Date;
+}
+
+interface User {
+  id: string;
+  name: string;
+  picture: string;
+}
+```
+
+```json
+{
+  "id": "f189ab25-5644-4d72-bd7c-0170ee9c8ede",
+  "name": "chat room 1",
+  "users": [
+    {
+      "id": "user1",
+      "name": "lgh",
+      "picture": "https://gravatar.com/avatar/c274467c5ef4fe381b154a20c5e7ce26?s=200&d=retro"
+    },
+    {
+      "id": "user2",
+      "name": "ldj",
+      "picture": "https://gravatar.com/avatar/d94869409b4e94903723612a4f93a6f9?s=200&d=retro"
+    }
+  ],
+  "isPrivate": true,
+  "updatedAt": "2023-10-31T13:18:38.216Z"
+}
+```
+
+# Socket
+- socket.io 의 사용을 추천드립니다.
+- Socket 연결시에도 headers는 유지해야 합니다.
+## 기본 연결
+```ts
+io(`https://fastcampus-chat.net/chat?chatId=${chatId}`,
+  {
+    extraHeaders: {
+      Authorization: "Bearer <accessToken>",
+      serverId: "test",
+    },
+  })
+```
+
+## emit Event(client -> server)
+### example
+```ts
+socket.emit('message-to-server', text)
+```
+### message-to-server
+- 같은 방에 있는 사람들에게 메세지를 전달합니다.
+
+요청 데이터
+```ts
+type RequestData: string;
+```
+### fetch-messages
+- 이전 대화 목록을 불러옵니다.
+- `messages-to-client`로 데이터를 받을 수 있습니다.
+
+요청 데이터
+- 없음
+### users
+- 접속 상태인 유저 목록을 불러옵니다.
+- `users-to-client`로 데이터를 받을 수 있습니다.
+
+요청 데이터
+- 없음 
+
+## on Event(server -> client)
+### example
+```ts
+socket.on('message-to-client', (messageObject) => {
+  console.log(messageObject);
+})
+```
+### message-to-client
+- 같은 방에 있는 사람들에게 메세지를 전달합니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  id: string;
+  text: string;
+  userId: string; // 메세지를 보낸 사람의 id
+  createdAt: Date;
+}
+```
+### messages-to-client
+- 이전 대화 목록을 불러옵니다.
+
+응답 데이터
+```ts
+interface Message {
+  id: string;
+  text: string;
+  userId: string; // 메세지를 보낸 사람의 id
+  createdAt: Date;
+}
+
+interface ResponseData {
+  messages: Message[];
+}
+```
+### join
+- 같은 방에 새로운 사람이 들어오면 모든 유저의 정보를 다시 받습니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  users: string[]; // 참여자들 id
+  joiners: string[]; // 새로운 참여자 id
+}
+```
+### leave
+- 같은 방에 사람이 나가면 모든 유저의 정보를 다시 받습니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  users: string[]; // 참여자들 id
+  leaver: string; // 나간 사용자 id
+}
+```
+
+### users-to-client
+- 접속 상태인 유저 목록을 불러옵니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  user: string[]; // 참가자들 id
+}
+```
+
+## server 연결
+```ts
+io(`https://fastcampus-chat.net/server`,
+  {
+    extraHeaders: {
+      Authorization: "Bearer <accessToken>",
+      serverId: "test",
+    },
+  })
+```
+
+## emit Event(client -> server)
+### example
+```ts
+socket.emit('users-server')
+```
+### users-server
+- 같은 serverId를 사용하는 online 사용자를 불러옵니다.
+- `users-server-to-client`로 데이터를 받을 수 있습니다.
+
+요청 데이터
+- 없음
+
+## on Event(server -> client)
+### example
+```ts
+socket.on('message-to-client', (messageObject) => {
+  console.log(messageObject);
+})
+```
+
+### users-server-to-client
+- 같은 serverId를 사용하는 접속 상태인 유저 목록을 불러옵니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  user: string[]; // 참가자들 id
+}
+```
+
+### invite
+- 새로운 채팅방 생성시 해당 채팅방 유저에게 채팅방 정보를 전송합니다.
+- 기존 채팅방에 유저 초대시 초대된 유저에게 채팅방 정보를 전송합니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  id: string;
+  name: string;
+  users: string[]; // 참여자들 id
+  isPrivate: boolean;
+  updatedAt: Date;
+}
+```
+
+### new-chat
+- 새로운 대화방이 생긴 경우 (not private) 서버(팀에서 사용하는 serverId)의 참여자들에게 이를 전달합니다.
+
+응답 데이터
+```ts
+interface ResponseData {
+  id: string;
+  name: string;
+  users: string[]; // 참여자들 id
+  isPrivate: boolean;
+  updatedAt: Date;
+}
+```
+
+</details>
+
+프로젝트 진행 중 가장 큰 어려움 중 하나는 제공된 API만으로 일반 사용자와 숙박업체를 운영하는 호스트 사용자를 구분할 수 없었다는 점이었습니다. API에서 제공하는 사용자 정보에는 'id', 'password', 'name', 'picture' 등의 기본적인 정보만 포함되어 있어, 숙박업체에 대한 구체적인 정보인 'location', 'address', 'detail' 등을 관리할 수 없었습니다.
+
+이러한 한계로 인해, 호스트 사용자와 그들의 숙박업체 정보를 효과적으로 관리하고, 일반 사용자와 호스트 간의 일대일 채팅 기능을 구현하기 위해서는 추가적인 데이터 관리 시스템이 필요했습니다. 이에 따라, Firebase를 프로젝트에 도입하여 호스트 데이터를 별도로 관리하기로 결정했습니다.
+
+Firebase를 사용하면서 고려한 주요 사항은 다음과 같습니다:
+
+- 데이터 구조 설계: Firebase에 저장할 호스트 데이터의 구조를 설계하여, 'location', 'address', 'detail'과 같은 필요한 정보를 포함시켰습니다.
+- 데이터 동기화: API를 통해 얻은 사용자 정보와 Firebase에 저장된 호스트 정보 간의 동기화를 어떻게 유지할지에 대한 고민이 필요했습니다. 특히, 호스트의 'id'를 기준으로 API의 사용자 정보와 Firebase의 호스트 정보를 연결하는 방식을 구현했습니다.
+결국, Firebase를 도입함으로써 개별 호스트에 대한 상세 정보를 관리할 수 있는 구조를 마련하고, 제공된 API의 한계를 극복하여 프로젝트의 핵심 기능을 구현할 수 있었습니다.
+
 
 ## 회고
 
-급변하는 프론트엔드 세계에서 항상 새로운 라이브러리와 새로운 프레임워크들을 익혀야 한다는 점이 항상 마음의 짐처럼 쌓여 큰 부담으로 다가왔었는데 이번 프로젝트를 통해 새로운 것들을 익히는 것에 대한 부담감을 많이 줄일 수 있던 것 같다. 아무래도 다양한 것들을 많이 사용해 볼수록 각 라이브러리들의 편리함을 체감할 수 있게 되어 그런 것 같다. NEXT.js를 본격적으로 사용해 본 적은 처음이었는데 많이 낯설지 않아서 좋았다. 하지만 낯설지 않았단 점은 NEXT.js의 장점을 충분히 활용하지 못했기 때문 인 것 같다..😂 api라우트를 사용하지 못한 점이 너무 아쉽다. 또 기능별 커밋이 아닌 페이지별 작업하는 아주 나쁜 습관이 쉽게 고쳐지지 않는다😂..하루 빨리 고칠 수 있도록 노력해야겠다! 좋은 조장님과 팀원들, 그리고 멘토님을 만난 덕분에 프로젝트를 잘 마무리 할 수 있었던 것 같다. 단순히 역할을 나눠 각자의 기능 개발을 하기 보단, 작업 현황과 결과물을 보며 이 작업은 어떻게 개선되면 좋을지에 대한 피드백을 말해주셔서 특히나 많은 것들을 접하고 배울 수 있었다. 문제를 해결하기 위한 접근 방법들도 차근차근 알려주셔서 수정작업도 즐겁게 할 수 있던 것 같다. 이번 프로젝트를 되돌아 보니 도움받은것들 뿐이어서 많은 아쉬움이 남는다. 팀원들에게 도움되는 사람이 될 수 있도록 분발해야겠다🔥
+급변하는 프론트엔드 세계에서 매 번 새로운 라이브러리와 새로운 프레임워크들을 익혀야 한다는 점이 항상 큰 부담이었습니다. 하지만 이번 프로젝트를 통해 그 부담을 많이 덜어 낼 수 있었던 것 같습니다. 
+프로젝트가 진행됨에 따라 다양한 개발 경험을 쌓을 수 있었고, 그 과정에서 각 라이브러리의 편리함을 직접 체험할 수 있었습니다. 
+새로운 라이브러리와 프레임워크는 빠르게 학습하고 정복해야 할 대상이 아닌 도움이 되는 도구로 인식하게 되었고, 이러한 마음가짐의 변화는 개발을 더욱 즐겁게 만들어 주었습니다.
+또한 협업도구로 'zira'도 처음 사용해보았는데 github와의 연동을 통해 브랜치 관리와 작업상황 공유가 가능한 점이 좋았습니다. 기존 notion을 통해 단순히 역할 분배/작업상황을 기록 하는 것 보다 효율적이고 편리했던 것 같습니다.
 
-</details>
+NEXT.js를 본격적으로 사용해 본 적은 이번이 처음이었는데 생각보다 낯설지 않아서 좋았습니다. 하지만 낯설지 않았던 가장 큰 이유는 NEXT.js의 강점을 충분히 활용하지 못했기 때문 인 것 같습니다..😂 
+팀원 모두가 NEXT.js 프로젝트는 처음이었기 때문에, App router에 비해 더 간단하고 직관적인 Pages Router를 사용하였습니다.
+하지만 App Router가 다양한 라우팅 요구사항과 상황에 더 유연하게 대처 가능하며, 성능면에서 더욱 좋다고 하여 다음에는 App Router를 사용해보고 싶습니다. 또한 다음 NEXT.js 프로젝트에서는 CSR/SSG/ISR/SSR 각각의 렌더링 방식의 특성과 장단점을 이해하고, 프로젝트를 진행하기 전에 렌더링 방식을 고려한 페이지 설계를 하고 싶습니다.
+
+좋은 조장님과 팀원들, 그리고 멘토님을 만난 덕분에 프로젝트를 성공적으로 마무리 할 수 있었습니다. 단순히 역할을 나누어 각자의 기능을 개발하는 것이 아니라, 작업 상태와 결과를 보며 어떻게 하면 더 개선할 수 있을지 피드백을 주고받으며 많은 것을 보고 배울 수 있었습니다. 문제를 해결하기 위한 접근 방법에 대해서도 차근차근 고민해보고, 서로 방법을 공유해 나갔기 때문에 수정 작업도 즐겁게 할 수 있었습니다. 
+다시 한 번 멋진 팀원들께 감사 인사를 전하고 싶습니다.💖
+
